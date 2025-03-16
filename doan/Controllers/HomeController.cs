@@ -17,7 +17,10 @@ namespace doan.Controllers
         {
             return View();
         }
-
+        public IActionResult ChonLevel()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
