@@ -53,12 +53,35 @@
     border: 2px solid #3B82F6;
     color: #3B82F6;
 }
-
-    .btn-level:hover, .btn-level.active {
+.btn-level:hover, .btn-level.active {
         background-color: #3B82F6;
         color: white;
-    }
+ }
+.btn-level1 {
+    background-color: white;
+    color: #3B82F6;
+}
+.btn-level2 {
+    background-color: white;
+    color: #3B82F6;
+}
+.btn-level3 {
+    background-color: white;
+    color: #3B82F6;
+}
+.btn-level1:hover, .btn-level1.active {
+    background-color: #3B82F6;
+    color: white;
+}
+.btn-level2:hover, .btn-level2.active {
+    background-color: #3B82F6;
+    color: white;
+}
 
+.btn-level3:hover, .btn-level3.active {
+    background-color: #3B82F6;
+    color: white;
+}
 /* Grid bài học */
 .grid-container {
     display: flex;
