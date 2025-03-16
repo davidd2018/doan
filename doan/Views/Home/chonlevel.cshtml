@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Trang chủ";
+}
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/chonlevel.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class ="header" >
+            <div class=" bold-text">
+                <a href="/Home/Index"><h2 style=" font-size: 1.125rem;">Trang chủ</h2></a>
+            </div>
+            <div class="level-selection">
+                <span> Cấp độ:</span>
+                <button class="btn-level" onclick="filterLevel('N5')">N5</button>
+            </div>
+        </div>
+
+        <!-- Grid bài học -->
+        <div class="grid-container">
+            <div class="grid-item level-N5">
+                <img src="https://tiengnhatcoban.edu.vn/images/2018/10/11/hoc-tu-vung-tieng-nhat-bai-1.jpg" alt="Bài 1">
+                <h3>Bài 1</h3>
+                <p>Từ vựng - Ngữ pháp</p>
+            </div>
+            <div class="grid-item level-N5">
+                <img src="https://vn.wa-tera.com/wp-content/uploads/2021/06/Slide1-7.png" alt="Bài 2">
+                <h3>Bài 2</h3>
+                <p>Từ vựng - Ngữ pháp</p>
+            </div>
+            <div class="grid-item level-N5">
+                <img src="https://vn.wa-tera.com/wp-content/uploads/2021/06/Slide1-8.png" alt="Bài 3">
+                <h3>Bài 3</h3>
+                <p>Từ vựng - Ngữ pháp </p>
+            </div>
+        </div>
+
+    </div>
+</body>
