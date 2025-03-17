@@ -1,0 +1,38 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+        "navbar navbar"
+        "sidenav main";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    grid-area: navbar;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.sidenav {
+    grid-area: sidenav;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+    .sidenav ul li a {
+        text-decoration: none;
+        list-style: none;
+        color: black;
+    }
+
+.main-content {
+    grid-area: main;
+    padding: 10px;
+}

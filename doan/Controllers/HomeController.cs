@@ -21,6 +21,12 @@ namespace doan.Controllers
         {
             return View();
         }
+
+        public IActionResult N5_Bai01()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
