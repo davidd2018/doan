@@ -12,28 +12,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N5/Bai 1</title>
+    <title>Webpage Layout</title>
     <link rel="stylesheet" href="~/css/N5_Bai01.css" asp-append-version="true" />
 </head>
 <body>
-    <div class="navbar">
-        <a href="/Home/Index">HomePage</a>
+    <div class="header">
+        <h1>
+            <a href="~/Home/Index">Hompage</a>
+        </h1>
     </div>
-    <div class="sidenav">
-        <p>Level: N5</p>
-        <div>
-         <ul>
-			<li style="text-decoration= none;">
-				<a href="TuVung">Từ vựng</a>
-            </li>
-            <li>
-				<a href="Nguphap">Ngữ pháp</a>
-			</li>
-			</ul>
+    <div class="container">
+        <div class="side-banner">
+            
         </div>
+        <div class="main-container">
+            
+                <h1>Bảng Từ Vựng Tiếng Nhật</h1>
+                <table>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 20px;
+                            background-color: #f9f9f9;
+                        }
+
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin: 20px 0;
+                        }
+
+                        th, td {
+                            border: 1px solid #ccc;
+                            padding: 8px;
+                            text-align: left;
+                        }
+
+                        th {
+                            background-color: #f2f2f2;
+                        }
+                    </style>
+                    <thead>
+                        <tr>
+                            <th>Từ Vựng</th>
+                            <th>Hán Tự</th>
+                            <th>Âm Hán</th>
+                            <th>Phát Âm</th>
+                            <th>Nghĩa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>わたし</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>tôi</td>
+                        </tr>
+                        <tr>
+                            <td>あなた</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>anh/ chị/ ông/ bà</td>
+                        </tr>
+                        <tr>
+                            <td>あのひと</td>
+                            <td>あの人</td>
+                            <td>NHÂN</td>
+                            <td></td>
+                            <td>người kia, người đó</td>
+                        </tr>
+                        <tr>
+                            <td>あのかた</td>
+                            <td>あの方</td>
+                            <td>PHƯƠNG</td>
+                            <td></td>
+                            <td>vị kia (cách nói lịch sự của あのひと)</td>
+                        </tr>
+                        <tr>
+                            <td>～さん</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>anh, chị, ông, bà</td>
+                        </tr>
+                        <tr>
+                            <td>～ちゃん</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>(hậu tố thêm vào sau tên của trẻ em thay cho 「～さん」)</td>
+                        </tr>
+                        <tr>
+                            <td>～じん</td>
+                            <td>～人</td>
+                            <td>NHÂN</td>
+                            <td></td>
+                            <td>người (nước)~ ví dụ 「アメリカじん」: người Mỹ</td>
+                        </tr>
+                        <tr>
+                            <td>せんせい</td>
+                            <td>先生</td>
+                            <td>TIÊN SINH</td>
+                            <td></td>
+                            <td>thầy/ cô</td>
+                        </tr>
+                        <tr>
+                            <td>きょうし</td>
+                            <td>教師</td>
+                            <td>GIÁO SƯ</td>
+                            <td></td>
+                            <td>giáo viên</td>
+                        </tr>
+                        <tr>
+                            <td>がくせい</td>
+                            <td>学生</td>
+                            <td>HỌC SINH</td>
+                            <td></td>
+                            <td>học sinh, sinh viên</td>
+                        </tr>
+                        <tr>
+                            <td>かいしゃいん</td>
+                            <td>会社員</td>
+                            <td>HỘI XÃ VIÊN</td>
+                            <td></td>
+                            <td>nhân viên công ty</td>
+                        </tr>
+                        <tr>
+                            <td>しゃいん</td>
+                            <td>社員</td>
+                            <td>XÃ VIÊN</td>
+                            <td></td>
+                            <td>nhân viên công ty (ví dụ: ＩＭＣのしゃいん)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr />
+			<h1><center>Ngữ Pháp</center></h1><br />
+                <div class="nguphap">
+                    <section>
+                    <h2>1. Cấu trúc câu khẳng định</h2><br />
+                        <p><strong>A は B です。</strong></p><br />
+                        <p>わたしは学生です。 (Tôi là học sinh.)</p><br />
+                    <p>あなたは日本人です。 (Bạn là người Nhật.)</p><br />
+
+                    <h2>2. Câu phủ định</h2><br />
+                    <p><strong>A は B ではありません。</strong></p><br />
+                    <p>わたしは学生ではありません。 (Tôi không phải là học sinh.)</p><br />
+
+                    <h2>3. Câu nghi vấn</h2><br />
+                    <p><strong>A は B ですか？</strong></p><br />
+                    <p>あなたは学生ですか？ (Bạn có phải là học sinh không?)</p><br />
+                    </section>
+                </div>
+
+        </div>
+        @* <div class="side-banner"> *@
+          
+        @* </div> *@
     </div>
-    <div class="main-content">
-        <p>Main Content</p>
+    <div class="footer">
+        <p></p>
     </div>
 </body>
 </html>

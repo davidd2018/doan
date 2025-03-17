@@ -1,38 +1,44 @@
 ﻿body {
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-areas:
-        "navbar navbar"
-        "sidenav main";
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: auto 1fr;
-    height: 100vh;
     font-family: Arial, sans-serif;
 }
 
-.navbar {
-    grid-area: navbar;
+.header, .footer {
     background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.side-banner {
+    width: 20%;
+    background-color: #e2e2e2;
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #ccc;
 }
 
-.sidenav {
-    grid-area: sidenav;
-    background-color: #f9f9f9;
+.main-container {
+    flex: 1;
+    background-color: #ffffff;
     padding: 10px;
-    border-right: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-    .sidenav ul li a {
-        text-decoration: none;
-        list-style: none;
-        color: black;
-    }
+.nguphap p, h1, h2 {
+    margin: 0; /* Loại bỏ khoảng cách bên ngoài */
+    padding: 0; /* Loại bỏ khoảng cách bên trong */
+    text-align: left; /* Căn lề trái */
+}
 
-.main-content {
-    grid-area: main;
-    padding: 10px;
+
+.footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
 }
