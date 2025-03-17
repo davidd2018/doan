@@ -1,0 +1,185 @@
+﻿@{
+    ViewData["Title"] = "N5_Bai01";
+}
+
+@{
+    Layout = null; // Use null if you are not using a shared layout, or define it as per your project
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Layout</title>
+    <link rel="stylesheet" href="~/css/N5_Bai02.css"/>
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <a href="~/Home/Index">Trang Chu</a>
+        </h1>
+    </div>
+    <div class="container">
+        <div class="side-banner">
+        </div>
+        <div class="main-container">
+
+            <h1>Bảng Từ Vựng Tiếng Nhật</h1>
+            <table>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                        background-color: #f9f9f9;
+                    }
+
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin: 20px 0;
+                    }
+
+                    th, td {
+                        border: 1px solid #ccc;
+                        padding: 8px;
+                        text-align: left;
+                    }
+
+                    th {
+                        background-color: #f2f2f2;
+                    }
+                </style>
+                <thead>
+                    <tr>
+                        <th>Từ Vựng</th>
+                        <th>Hán Tự</th>
+                        <th>Âm Hán</th>
+                        <th>Phát Âm</th>
+                        <th>Nghĩa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>これ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Cái này, đây (vật ở gần người nói)</td>
+                    </tr>
+                    <tr>
+                        <td>それ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Cái đó, đó (vật ở gần người nghe)</td>
+                    </tr>
+                    <tr>
+                        <td>あれ</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Cái kia, kia (vật ở xa cả người nói và người nghe)</td>
+                    </tr>
+                    <tr>
+                        <td>この</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>này</td>
+                    </tr>
+                    <tr>
+                        <td>その</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>đó</td>
+                    </tr>
+                    <tr>
+                        <td>あの</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>kia</td>
+                    </tr>
+                    <tr>
+                        <td>ほん</td>
+                        <td>本</td>
+                        <td>BỔN</td>
+                        <td></td>
+                        <td>Sách</td>
+                    </tr>
+                    <tr>
+                        <td>じしょ</td>
+                        <td>辞書</td>
+                        <td>TỪ THƯ</td>
+                        <td></td>
+                        <td>Từ điển</td>
+                    </tr>
+                    <tr>
+                        <td>ざっし</td>
+                        <td>雑誌</td>
+                        <td>TẠP CHÍ</td>
+                        <td></td>
+                        <td>Tạp chí</td>
+                    </tr>
+                    <tr>
+                        <td>しんぶん</td>
+                        <td>新聞</td>
+                        <td>TÂN VĂN</td>
+                        <td></td>
+                        <td>Báo</td>
+                    </tr>
+                    <tr>
+                        <td>ノート</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Vở</td>
+                    </tr>
+                    <tr>
+                        <td>てちょう</td>
+                        <td>手帳</td>
+                        <td>THỦ TRƯỚNG</td>
+                        <td></td>
+                        <td>Sổ tay</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            <h1><center>Ngữ Pháp</center></h1><br />
+            <div class="nguphap">
+                <section>
+                    <h2>1.これ/ それ/ あれ</h2><br />
+                    <p><strong>これ、それ、あれ là những từ chỉ vật và có chức năng như 1 danh từ</strong></p><br />
+                    <p>これ được dùng để chỉ những vật ở gần người nói (Tôi là học sinh.)</p><br />
+                    <p>それ được dùng để chỉ những vật ở gần người nghe</p><br />
+					<p>あれ được dùng để chỉ những vật ở xa cả người nói và người nghe</p><br />
+                    <p>これは　じしょですか。 (Đây là quyển từ điển phải không?)</p><br />
+                    <p>あれは　何（なん）ですか。 (Kia là cái gì?)</p><br />
+
+                    <<h2>2.このN/ そのN/ あのN</h2><br />
+                    <p><strong>この」、「その」、「あの」là những từ dùng để bổ nghĩa cho danh từ đứng đằng sau nó.</strong></p><br />
+                    <p>この　dùng để bổ nghĩa cho những danh từ chỉ những vật ở gần người nói.</p><br />
+                    <p>その  dùng để bổ nghĩa cho những danh từ chỉ những vật ở gần người.</p><br />
+                    <p>あの  dùng để bổ nghĩa cho những danh từ chỉ những vật ở xa cả người nói và người nghe.</p><br />
+                    <p>このほんは　何（なん）の　ほんですか。 (Quyển sách này là sách gì ?)</p><br />
+                    <p>そのほんは　えいごの　ほんです。 (Quyển sách đó là sách tiếng Anh.)</p><br />
+                    <p>あの方　は　どなたですか。 (Vị đó là ai ?)</p><br />
+
+                    <h2>3.そうです/ そうじゃ　ありません</h2><br />
+                    <p><strong>そう」được sử dụng để trả lời vắn tắt cho một câu nghi vấn danh từ ( câu nghi vấn mà tận cùng bằng những danh từ).「はい、そうです」 là câu trả lời khẳng định và「いいえ、そうじゃ　ありません」 là câu trả lời phủ định.</strong></p><br />
+                    <p>A：それは　ラジカセ　ですか。(Bạn có phải là học sinh không?)</BR>B1：いいえ、ラジカセではありません。 </p><br />
+                </section>
+            </div>
+
+        </div>
+        @* <div class="side-banner"> *@
+
+        @* </div> *@
+    </div>
+    <div class="footer">
+        <p></p>
+    </div>
+</body>
+</html>
