@@ -23,8 +23,8 @@
 
         <div class="flex items-center space-x-4">
             <div class="flex space-x-2">
-                <button class="btn">Đăng nhập</button>
-                <button class="btn">Đăng ký</button>
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn bg-blue-500 text-white px-4 py-2 rounded">Đăng nhập</a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn bg-green-500 text-white px-4 py-2 rounded">Đăng ký</a>
             </div>
         </div>
     </div>
@@ -63,3 +63,5 @@
         </div>
     </div>
 </div>
+
+
