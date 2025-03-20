@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔥 Đảm bảo chuỗi kết nối từ appsettings.json
+//  Đảm bảo chuỗi kết nối từ appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("doan")
     ?? throw new InvalidOperationException("❌ Connection string 'doan' is missing. Kiểm tra appsettings.json!");
 
-// ✅ Cấu hình DbContext
+//  Cấu hình DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// ✅ Cấu hình Identity
+//  Cấu hình Identity
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -31,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
-// 🔥 Đặt cấu hình Application Cookie SAU KHI AddDefaultIdentity
+//  Đặt cấu hình Application Cookie SAU KHI AddDefaultIdentity
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
@@ -39,7 +39,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
-// ✅ Thêm Razor Pages để hỗ trợ Identity UI
+//  Thêm Razor Pages để hỗ trợ Identity UI
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -65,6 +65,6 @@ app.MapControllerRoute(
 
 app.UseAuthentication();
 
-app.MapRazorPages(); // 🔥 Cần có để Identity UI hoạt động
+app.MapRazorPages(); //  Cần có để Identity UI hoạt động
 
 app.Run();
