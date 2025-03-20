@@ -1,4 +1,4 @@
-﻿ @{
+﻿@{
     ViewData["Title"] = "Trang chủ";
 }
 
@@ -20,13 +20,11 @@
                 <li><a href="/Home/ChonLevel"> Cấp độ N5</a></li>
             </ul>
         </div>
-
-        <div class="flex items-center space-x-4">
-            <div class="flex space-x-2">
-                <a asp-area="Identity" asp-page="/Account/Login" class="btn bg-blue-500 text-white px-4 py-2 rounded">Đăng nhập</a>
-                <a asp-area="Identity" asp-page="/Account/Register" class="btn bg-green-500 text-white px-4 py-2 rounded">Đăng ký</a>
-            </div>
-        </div>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                <button type="submit" class="btn btn-link text-dark">🚪 Đăng xuất</button>
+            </form>
+        </li>
     </div>
 
     <!-- Main Content -->

@@ -63,6 +63,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.UseAuthentication();
+
 app.MapRazorPages(); // 🔥 Cần có để Identity UI hoạt động
 
 app.Run();

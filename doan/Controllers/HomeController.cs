@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace doan.Controllers
 {
@@ -29,13 +30,39 @@ namespace doan.Controllers
             {
                 var user = await _userManager.GetUserAsync(User);
                 ViewBag.UserMessage = " Đã đăng nhập với tài khoản: " + (user?.UserName ?? "Không xác định");
+
+                return View("Index1");
             }
             else
             {
                 ViewBag.UserMessage = " Chưa đăng nhập!";
+                return View("Index");
             }
-
             return View();
+        }
+        public IActionResult Index1()
+        {
+            _logger.LogInformation("Người dùng đã vào trang Chọn Level.");
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(string email, string password)
+        {
+            var user = await _userManager.FindByNameAsync(email);
+
+            if (user != null) // User exists in the database
+            {
+                // Redirect to Index1 if the user is found and login is successful
+                var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent: false, lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index1"); // Redirect to Index1 if login is successful
+                }
+            }
+            ViewBag.ErrorMessage = "Invalid username or password.";
+            return View("Login");
         }
 
         public IActionResult ChonLevel()
