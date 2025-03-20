@@ -55,7 +55,7 @@
                     <thead>
                         <tr>
                             <th>Từ Vựng</th>
-                            <th>Hán Tự</th>
+                            <th>Phát Âm</th>
                             <th>Âm Hán</th>
                             <th>Phát Âm</th>
                             <th>Nghĩa</th>
@@ -147,6 +147,35 @@
                             <td>nhân viên công ty (ví dụ: ＩＭＣのしゃいん)</td>
                         </tr>
                     </tbody>
+                <tbody>
+                    @if (Model != null && Model.Any()) // Kiểm tra Model có dữ liệu hay không
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TuVung</td>
+                            <td>@item.HanTu</td>
+                            <td>@item.AmHan</td>
+                            <td>@item.PhatAm</td>
+                            <td>@item.Nghia</td>
+                        </tr>
+                    }
+                }
+
+                    <!-- Hàng nhập liệu để thêm từ vựng mới -->
+                    <tr>
+                        <form asp-action="Create" method="post">
+                        <td><input type="text" name="TuVung" required placeholder="Nhập từ vựng..." /></td>
+                        <td><input type="text" name="HanTu" placeholder="Nhập Hán tự..." /></td>
+                        <td><input type="text" name="AmHan" placeholder="Nhập Âm Hán..." /></td>
+                        <td><input type="text" name="PhatAm" placeholder="Nhập phát âm..." /></td>
+                        <td><input type="text" name="Nghia" required placeholder="Nhập nghĩa..." /></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                        </td>
+                        </form>
+                    </tr>
+                </tbody>
                 </table>
                 <hr />
 			<h1><center>Ngữ Pháp</center></h1><br />

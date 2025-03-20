@@ -5,20 +5,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using doan.Migrations;
 
 namespace doan.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
         public HomeController(
+             ApplicationDbContext context,
             ILogger<HomeController> logger,
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager)
         {
+            _context = context;
             _logger = logger;
             _signInManager = signInManager;
             _userManager = userManager;
@@ -26,6 +31,7 @@ namespace doan.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             if (_signInManager.IsSignedIn(User)) // Kiểm tra nếu đã đăng nhập
             {
                 var user = await _userManager.GetUserAsync(User);
@@ -42,6 +48,8 @@ namespace doan.Controllers
         }
         public IActionResult Index1()
         {
+            List<Bai01Model> danhSachTuVung = _context.Bai01.ToList(); // Lấy dữ liệu từ DB
+            return View(danhSachTuVung); // Truyền danh sách từ vựng vào View
             _logger.LogInformation("Người dùng đã vào trang Chọn Level.");
             return View();
         }
@@ -80,6 +88,26 @@ namespace doan.Controllers
         public IActionResult N5_Bai01()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Bai01Model model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                _context.Bai01.Add(model);  
+                _context.SaveChanges();
+                // Lưu vào database (giả lập)
+                ViewBag.Message = "Dữ liệu đã được lưu thành công!";
+               
+            }
+            //return View(model);
+            return RedirectToAction("N5_Bai01");
         }
 
         public IActionResult N5_Bai02()

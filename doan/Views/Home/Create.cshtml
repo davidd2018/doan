@@ -1,0 +1,33 @@
+﻿@model Bai01Model
+
+@{
+    ViewData["Title"] = "Thêm Từ Vựng";
+}
+
+<h1>Thêm Từ Vựng Mới</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Từ Vựng</label>
+        <input asp-for="TuVung" class="form-control" required />
+    </div>
+    <div>
+        <label>Hán Tự</label>
+        <input asp-for="HanTu" class="form-control" />
+    </div>
+    <div>
+        <label>Âm Hán</label>
+        <input asp-for="AmHan" class="form-control" />
+    </div>
+    <div>
+        <label>Phát Âm</label>
+        <input asp-for="PhatAm" class="form-control" />
+    </div>
+    <div>
+        <label>Nghĩa</label>
+        <input asp-for="Nghia" class="form-control" required />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Lưu</button>
+    <a asp-action="N5_Bai01" class="btn btn-secondary">Quay lại</a>
+</form>

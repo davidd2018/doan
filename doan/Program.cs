@@ -20,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     options.Password.RequireDigit = true;
     options.Password.RequireUppercase = true;
     options.Password.RequireLowercase = true;
+
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.ConfigureApplicationCookie(options =>
@@ -42,6 +43,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 //  Thêm Razor Pages để hỗ trợ Identity UI
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+   
 
 var app = builder.Build();
 
@@ -62,8 +64,6 @@ app.UseAuthorization();  // Kích hoạt phân quyền
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.UseAuthentication();
 
 app.MapRazorPages(); //  Cần có để Identity UI hoạt động
 

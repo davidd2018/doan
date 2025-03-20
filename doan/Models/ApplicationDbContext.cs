@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace doan.Models
 {
@@ -9,8 +10,9 @@ namespace doan.Models
         {
         }
 
-        // Thêm các bảng mới nếu có
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }  // ✅ Đúng
+        public DbSet<Bai01Model> Bai01 { get; set; }  // ✅ Đúng
+        public object Bai01Model { get; internal set; }
     }
 
     public class Product
@@ -19,4 +21,6 @@ namespace doan.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
     }
+
+
 }
