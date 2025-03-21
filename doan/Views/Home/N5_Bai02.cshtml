@@ -59,92 +59,103 @@
                         <th>Nghĩa</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>これ</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Cái này, đây (vật ở gần người nói)</td>
-                    </tr>
-                    <tr>
-                        <td>それ</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Cái đó, đó (vật ở gần người nghe)</td>
-                    </tr>
-                    <tr>
-                        <td>あれ</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Cái kia, kia (vật ở xa cả người nói và người nghe)</td>
-                    </tr>
-                    <tr>
-                        <td>この</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>này</td>
-                    </tr>
-                    <tr>
-                        <td>その</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>đó</td>
-                    </tr>
-                    <tr>
-                        <td>あの</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>kia</td>
-                    </tr>
-                    <tr>
-                        <td>ほん</td>
-                        <td>本</td>
-                        <td>BỔN</td>
-                        <td></td>
-                        <td>Sách</td>
-                    </tr>
-                    <tr>
-                        <td>じしょ</td>
-                        <td>辞書</td>
-                        <td>TỪ THƯ</td>
-                        <td></td>
-                        <td>Từ điển</td>
-                    </tr>
-                    <tr>
-                        <td>ざっし</td>
-                        <td>雑誌</td>
-                        <td>TẠP CHÍ</td>
-                        <td></td>
-                        <td>Tạp chí</td>
-                    </tr>
-                    <tr>
-                        <td>しんぶん</td>
-                        <td>新聞</td>
-                        <td>TÂN VĂN</td>
-                        <td></td>
-                        <td>Báo</td>
-                    </tr>
-                    <tr>
-                        <td>ノート</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Vở</td>
-                    </tr>
-                    <tr>
-                        <td>てちょう</td>
-                        <td>手帳</td>
-                        <td>THỦ TRƯỚNG</td>
-                        <td></td>
-                        <td>Sổ tay</td>
-                    </tr>
-                </tbody>
+                @model List<doan.Models.Bai01Model>
+                @{
+                    ViewData["Title"] = "N5_Bai01";
+                }
+
+                @{
+                    Layout = null; // Use null if you are not using a shared layout, or define it as per your project
+                }
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Webpage Layout</title>
+                    <link rel="stylesheet" href="~/css/N5_Bai02.css" />
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>
+                            <a href="~/Home/Index">Trang Chu</a>
+                        </h1>
+                    </div>
+                    <div class="container">
+                        <div class="side-banner">
+                        </div>
+                        <div class="main-container">
+
+                            <h1>Bảng Từ Vựng Tiếng Nhật</h1>
+                            <table>
+                                <style>
+                                    body {
+                                        font-family: Arial, sans-serif;
+                                        margin: 20px;
+                                        background-color: #f9f9f9;
+                                    }
+
+                                    table {
+                                        width: 100%;
+                                        border-collapse: collapse;
+                                        margin: 20px 0;
+                                    }
+
+                                    th, td {
+                                        border: 1px solid #ccc;
+                                        padding: 8px;
+                                        text-align: left;
+                                    }
+
+                                    th {
+                                        background-color: #f2f2f2;
+                                    }
+                                </style>
+                                <thead>
+                                    <tr>
+                                        <th>Từ Vựng</th>
+                                        <th>Phát Âm</th>
+                                        <th>Âm Hán</th>
+                                        <th>Hán tự<h /th>
+                                        <th>Nghĩa</th>
+                                    </tr>
+                                </thead>
+
+                                @if (Model != null && Model.Count > 0) // Kiểm tra Model có dữ liệu hay không
+                                {
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@(string.IsNullOrEmpty(item.TuVung) ? "Không có" : item.TuVung)</td>
+                                            <td>@(string.IsNullOrEmpty(item.PhatAm) ? "Không có" : item.PhatAm)</td>
+                                            <td>@(string.IsNullOrEmpty(item.AmHan) ? "Không có" : item.AmHan)</td>
+                                            <td>@(string.IsNullOrEmpty(item.HanTu) ? "Không có" : item.HanTu)</td>
+                                            <td>@(string.IsNullOrEmpty(item.Nghia) ? "Không có" : item.Nghia)</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="5">Không có dữ liệu!</td>
+                                    </tr>
+                                }
+
+                                <!-- Hàng nhập liệu để thêm từ vựng mới -->
+                                <tr>
+                                    <form asp-action="Create" method="post">
+                                    <td><input type="text" name="TuVung" required placeholder="Nhập từ vựng..." /></td>
+                                    <td><input type="text" name="PhatAm" placeholder="Nhập Phát Âm..." /></td>
+                                    <td><input type="text" name="AmHan" placeholder="Nhập Âm Hán..." /></td>
+                                    <td><input type="text" name="HanTu" placeholder="Nhập Hán tự..." /></td>
+                                    <td><input type="text" name="Nghia" required placeholder="Nhập nghĩa..." /></td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Thêm</button>
+                                    </td>
+                                    </form>
+                                </tr>
+                                </tbody>
             </table>
             <hr />
             <h1><center>Ngữ Pháp</center></h1><br />

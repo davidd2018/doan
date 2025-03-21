@@ -11,8 +11,11 @@ namespace doan.Models
         }
 
         public DbSet<Product> Products { get; set; }  // ✅ Đúng
-        public DbSet<Bai01Model> Bai01 { get; set; }  // ✅ Đúng
+        public DbSet<Bai01Model> Bai01 { get; set; }
         public object Bai01Model { get; internal set; }
+        public DbSet<Bai02Model> Bai02 { get; set; }
+       
+        public object Bai02Model { get; internal set; }
     }
 
     public class Product

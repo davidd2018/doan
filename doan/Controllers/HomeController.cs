@@ -125,8 +125,36 @@ namespace doan.Controllers
 
         public IActionResult N5_Bai02()
         {
-            return View();
+            var tuvunglist = _context.Bai01
+                .Select(t => new Bai01Model
+                {
+                    Id = t.Id,
+                    TuVung = t.TuVung ?? "NULL",
+                    PhatAm = t.PhatAm ?? "NULL",
+                    AmHan = t.AmHan ?? "NULL",
+                    HanTu = t.HanTu ?? "NULL",
+                    Nghia = t.Nghia ?? "NULL"
+                })
+                .ToList();
+
+            return View(tuvunglist);
         }
+        public IActionResult Create(Bai02Model model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                _context.Bai02.Add(model);
+                _context.SaveChanges();
+                // Lưu vào database (giả lập)
+                ViewBag.Message = "Dữ liệu đã được lưu thành công!";
+
+            }
+            //return View(model);
+            return RedirectToAction("N5_Bai02");
+        }
+
         public IActionResult N5_Bai03()
         {
             return View();
