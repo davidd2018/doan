@@ -87,7 +87,19 @@ namespace doan.Controllers
 
         public IActionResult N5_Bai01()
         {
-            return View();
+            var tuvunglist = _context.Bai01
+                .Select(t => new Bai01Model
+                {
+                    Id = t.Id,
+                    TuVung = t.TuVung ?? "NULL",
+                    PhatAm = t.PhatAm ?? "NULL",
+                    AmHan = t.AmHan ?? "NULL",
+                    HanTu = t.HanTu ?? "NULL",
+                    Nghia = t.Nghia ?? "NULL"
+                })
+                .ToList();
+
+            return View(tuvunglist);
         }
         [HttpGet]
         public IActionResult Create()
@@ -100,6 +112,7 @@ namespace doan.Controllers
             
             if (ModelState.IsValid)
             {
+
                 _context.Bai01.Add(model);  
                 _context.SaveChanges();
                 // Lưu vào database (giả lập)
