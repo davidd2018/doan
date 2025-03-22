@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpage Layout</title>
     <link rel="stylesheet" href="~/css/N5_Bai01.css"/>
+	<script src="~/js/site.js"></script>
 </head>
 <body>
     <div class="header">
@@ -46,41 +47,76 @@
                             border: 1px solid #ccc;
                             padding: 8px;
                             text-align: left;
+                            color: black
                         }
 
                         th {
                             background-color: #f2f2f2;
                         }
+
+                    #editButton {
+                        position: absolute; /* Đặt nút ở vị trí tuyệt đối */
+                        top: 10px; /* Căn chỉnh khoảng cách từ nút tới cạnh trên */
+                        right: 10px; /* Căn chỉnh khoảng cách từ nút tới cạnh phải */
+                        padding: 8px 16px;
+                        background-color: #007BFF; /* Màu xanh dương */
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+
+                        #editButton:hover {
+                            background-color: #0056b3; /* Màu xanh đậm hơn khi rê chuột */
+                        }
+
                     </style>
                     <thead>
                         <tr>
                             <th>Từ Vựng</th>
                             <th>Phát Âm</th>
                             <th>Âm Hán</th>
-                            <th>Hán tự<h/th>
+                            <th>Hán tự</th>
                             <th>Nghĩa</th>
                         </tr>
                     </thead>
 
-                    @if (Model != null && Model.Count > 0) // Kiểm tra Model có dữ liệu hay không
+                @if (Model != null && Model.Count > 0) // Kiểm tra Model có dữ liệu hay không
                 {
-                    @foreach (var item in Model)
+                    foreach (var item in Model)
                     {
                         <tr>
-                                <td>@(string.IsNullOrEmpty(item.TuVung) ? "Không có" : item.TuVung)</td>
-                                <td>@(string.IsNullOrEmpty(item.PhatAm) ? "Không có" : item.PhatAm)</td>
-                                <td>@(string.IsNullOrEmpty(item.AmHan) ? "Không có" : item.AmHan)</td>
-                                <td>@(string.IsNullOrEmpty(item.HanTu) ? "Không có" : item.HanTu)</td>
-                                <td>@(string.IsNullOrEmpty(item.Nghia) ? "Không có" : item.Nghia)</td>
+                            <td>@(string.IsNullOrEmpty(item.TuVung) ? "Không có" : item.TuVung)</td>
+                            <td>@(string.IsNullOrEmpty(item.PhatAm) ? "Không có" : item.PhatAm)</td>
+                            <td>@(string.IsNullOrEmpty(item.AmHan) ? "Không có" : item.AmHan)</td>
+                            <td>@(string.IsNullOrEmpty(item.HanTu) ? "Không có" : item.HanTu)</td>
+                            <td>@(string.IsNullOrEmpty(item.Nghia) ? "Không có" : item.Nghia)</td>
+                            <td>
+                                <button class="edit-btn" onclick="showEditForm('@item.Id')">Sửa</button>
+                            </td>
+
+                        </tr>
+                        <tr id="edit-form-@item.Id" style="display:none;">
+                            <td><input type="text" id="edit-tu-vung-@item.Id" value="@item.TuVung" /></td>
+                            <td><input type="text" id="edit-phat-am-@item.Id" value="@item.PhatAm" /></td>
+                            <td><input type="text" id="edit-am-han-@item.Id" value="@item.AmHan" /></td>
+                            <td><input type="text" id="edit-han-tu-@item.Id" value="@item.HanTu" /></td>
+                            <td><input type="text" id="edit-nghia-@item.Id" value="@item.Nghia" /></td>
+                            <td>
+                                @* <form asp-action="UpdateVocabulary" method="post"><button onclick="saveEdit('@item.Id')">Lưu</button></form> *@
+                               <form asp-action="UpdateVocabulary" method="post"> <button class="btn-edit" onclick="toggleEditMode(123, true)">Sửa</button></form>
+                            </td>
                         </tr>
                     }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="5">Không có dữ liệu!</td>
-                        </tr>
-                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">Không có dữ liệu</td>
+                    </tr>
+                }
+                <div id="editForm" style="display: none;"></div>
+
 
                     <!-- Hàng nhập liệu để thêm từ vựng mới -->
                     <tr>
@@ -92,9 +128,11 @@
                         <td><input type="text" name="Nghia" required placeholder="Nhập nghĩa..." /></td>
                         <td>
                             <button type="submit" class="btn btn-primary">Thêm</button>
+                        
                         </td>
                         </form>
                     </tr>
+
                 </tbody>
                 </table>
                 <hr />
