@@ -9,6 +9,7 @@ using doan.Migrations;
 
 namespace doan.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -106,13 +107,17 @@ namespace doan.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult UpdateVocabulary()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Create(Bai01Model model)
         {
             
             if (ModelState.IsValid)
             {
-
                 _context.Bai01.Add(model);  
                 _context.SaveChanges();
                 // Lưu vào database (giả lập)
@@ -122,6 +127,60 @@ namespace doan.Controllers
             //return View(model);
             return RedirectToAction("N5_Bai01");
         }
+        [HttpPost]
+        public IActionResult UpdateVocabulary(Bai01Model model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                _context.Bai01.Update(model);
+                _context.SaveChanges();
+                // Lưu vào database (giả lập)
+                ViewBag.Message = "Dữ liệu đã được lưu thành công!";
+
+            }
+            //return View(model);
+            return RedirectToAction("N5_Bai01");
+        }
+
+        //Chỉnh sửa
+        [HttpPut("api/vocabulary/{id}")]
+        public async Task<IActionResult> UpdateVocabulary(int id, [FromBody] Bai01Model model)
+        {
+            Console.WriteLine($"Received update for ID: {id}");
+
+            var existingData = await _context.Bai01.FindAsync(id);
+            if (existingData == null)
+            {
+                Console.WriteLine("Dữ liệu không tồn tại, không thể cập nhật.");
+                return NotFound();
+            }
+
+            // Gán lại giá trị mới
+            existingData.TuVung = model.TuVung;
+            existingData.PhatAm = model.PhatAm;
+            existingData.AmHan = model.AmHan;
+            existingData.HanTu = model.HanTu;
+            existingData.Nghia = model.Nghia;
+
+            _context.Entry(existingData).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                Console.WriteLine("Dữ liệu đã được cập nhật.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lưu: {ex.Message}");
+                return StatusCode(500, "Lỗi server");
+            }
+
+            return Ok(existingData);
+        }
+
+
 
         public IActionResult N5_Bai02()
         {

@@ -9,7 +9,7 @@ namespace doan.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-
+      
         public DbSet<Product> Products { get; set; }  // ✅ Đúng
         public DbSet<Bai01Model> Bai01 { get; set; }
         public object Bai01Model { get; internal set; }

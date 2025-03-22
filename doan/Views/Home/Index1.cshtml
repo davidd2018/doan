@@ -11,6 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	
 </head>
 
 <body>
@@ -27,6 +28,23 @@
         </div>
         <li class="nav-item">
             <style>
+                    /* Định dạng thẻ form để sắp xếp ngang */
+                    .form-inline {
+                        display: flex;
+                        align-items: center; /* Căn giữa theo trục ngang */
+                    }
+
+                    /* Tạo khoảng cách giữa chữ User và nút */
+                    .text-dark {
+                        margin-right: 10px;
+                    }
+
+                    /* Tùy chỉnh nút "Đăng xuất" */
+                    .btn-link {
+                        text-decoration: none;
+                        color: white;
+                    }
+
                 li{
                     list-style-type:none;
                 }
@@ -43,7 +61,6 @@
                             👋 Xin chào, @user?.UserName!
                         </span>
                     </a>
-
                 </li>
                     }
             <button type="submit" class="btn btn-link text-white" style="text-decoration:none;text-decoration-color:white;">
