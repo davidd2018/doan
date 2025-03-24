@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using doan.Migrations;
+using doan.Repository;
 
 namespace doan.Controllers
 {
@@ -13,6 +14,7 @@ namespace doan.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IVocabularyRepository _vocabularyRepository;
 
         private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -20,6 +22,7 @@ namespace doan.Controllers
 
         public HomeController(
              ApplicationDbContext context,
+             IVocabularyRepository vocabularyRepository,
             ILogger<HomeController> logger,
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager)
@@ -28,7 +31,9 @@ namespace doan.Controllers
             _logger = logger;
             _signInManager = signInManager;
             _userManager = userManager;
+            _vocabularyRepository = vocabularyRepository;
         }
+     
 
         public async Task<IActionResult> Index()
         {
@@ -127,57 +132,25 @@ namespace doan.Controllers
             //return View(model);
             return RedirectToAction("N5_Bai01");
         }
+
         [HttpPost]
-        public IActionResult UpdateVocabulary(Bai01Model model)
+        public IActionResult UpdateVocabulary(int Id, string TuVung, string PhatAm, string AmHan, string HanTu, string Nghia)
         {
-
-            if (ModelState.IsValid)
+            var vocab = _vocabularyRepository.GetByID(Id);
+            if (vocab != null)
             {
+                vocab.TuVung = TuVung;
+                vocab.PhatAm = PhatAm;
+                vocab.AmHan = AmHan;
+                vocab.HanTu = HanTu;
+                vocab.Nghia = Nghia;
 
-                _context.Bai01.Update(model);
-                _context.SaveChanges();
-                // Lưu vào database (giả lập)
-                ViewBag.Message = "Dữ liệu đã được lưu thành công!";
+                _vocabularyRepository.Update(vocab);
+                _vocabularyRepository.Save();
 
+                return Json(new { success = true });
             }
-            //return View(model);
-            return RedirectToAction("N5_Bai01");
-        }
-
-        //Chỉnh sửa
-        [HttpPut("api/vocabulary/{id}")]
-        public async Task<IActionResult> UpdateVocabulary(int id, [FromBody] Bai01Model model)
-        {
-            Console.WriteLine($"Received update for ID: {id}");
-
-            var existingData = await _context.Bai01.FindAsync(id);
-            if (existingData == null)
-            {
-                Console.WriteLine("Dữ liệu không tồn tại, không thể cập nhật.");
-                return NotFound();
-            }
-
-            // Gán lại giá trị mới
-            existingData.TuVung = model.TuVung;
-            existingData.PhatAm = model.PhatAm;
-            existingData.AmHan = model.AmHan;
-            existingData.HanTu = model.HanTu;
-            existingData.Nghia = model.Nghia;
-
-            _context.Entry(existingData).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-                Console.WriteLine("Dữ liệu đã được cập nhật.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi khi lưu: {ex.Message}");
-                return StatusCode(500, "Lỗi server");
-            }
-
-            return Ok(existingData);
+            return Json(new { success = false });
         }
 
 

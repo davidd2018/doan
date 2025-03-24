@@ -1,4 +1,5 @@
 ﻿using doan.Models;
+using doan.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,6 +40,9 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/Identity/Account/Logout";
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
+//Đăng ký IVocabularyRepository service
+builder.Services.AddScoped<IVocabularyRepository, VocabularyRepository>();
+
 
 //  Thêm Razor Pages để hỗ trợ Identity UI
 builder.Services.AddControllersWithViews();
@@ -57,13 +61,23 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors(builder =>
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
+
+
 
 app.UseAuthentication(); // Kích hoạt hệ thống đăng nhập
+
 app.UseAuthorization();  // Kích hoạt phân quyền
+
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.MapRazorPages(); //  Cần có để Identity UI hoạt động
 
