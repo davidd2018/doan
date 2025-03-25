@@ -10,7 +10,6 @@ using doan.Repository;
 
 namespace doan.Controllers
 {
-    
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -33,11 +32,9 @@ namespace doan.Controllers
             _userManager = userManager;
             _vocabularyRepository = vocabularyRepository;
         }
-     
 
         public async Task<IActionResult> Index()
         {
-
             if (_signInManager.IsSignedIn(User)) // Kiểm tra nếu đã đăng nhập
             {
                 var user = await _userManager.GetUserAsync(User);
@@ -50,14 +47,13 @@ namespace doan.Controllers
                 ViewBag.UserMessage = " Chưa đăng nhập!";
                 return View("Index");
             }
-            return View();
         }
+
         public IActionResult Index1()
         {
             List<Bai01Model> danhSachTuVung = _context.Bai01.ToList(); // Lấy dữ liệu từ DB
             return View(danhSachTuVung); // Truyền danh sách từ vựng vào View
             _logger.LogInformation("Người dùng đã vào trang Chọn Level.");
-            return View();
         }
 
         [HttpPost]
@@ -107,30 +103,35 @@ namespace doan.Controllers
 
             return View(tuvunglist);
         }
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult UpdateVocabulary()
-        {
-            return View();
-        }
+
         [HttpPost]
         public IActionResult Create(Bai01Model model)
         {
-            
             if (ModelState.IsValid)
             {
-                _context.Bai01.Add(model);  
+                _context.Bai01.Add(model);
                 _context.SaveChanges();
                 // Lưu vào database (giả lập)
                 ViewBag.Message = "Dữ liệu đã được lưu thành công!";
-               
             }
-            //return View(model);
             return RedirectToAction("N5_Bai01");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateTuVung(int id)
+        {
+            var vocab = _vocabularyRepository.GetByID(id);
+            if (vocab == null)
+            {
+                return NotFound();
+            }
+            return View(vocab);
         }
 
         [HttpPost]
@@ -148,12 +149,10 @@ namespace doan.Controllers
                 _vocabularyRepository.Update(vocab);
                 _vocabularyRepository.Save();
 
-                return Json(new { success = true });
+                return RedirectToAction("N5_Bai01");
             }
-            return Json(new { success = false });
+            return View("Error");
         }
-
-
 
         public IActionResult N5_Bai02()
         {
@@ -171,19 +170,16 @@ namespace doan.Controllers
 
             return View(tuvunglist);
         }
+
         public IActionResult Create(Bai02Model model)
         {
-
             if (ModelState.IsValid)
             {
-
                 _context.Bai02.Add(model);
                 _context.SaveChanges();
                 // Lưu vào database (giả lập)
                 ViewBag.Message = "Dữ liệu đã được lưu thành công!";
-
             }
-            //return View(model);
             return RedirectToAction("N5_Bai02");
         }
 

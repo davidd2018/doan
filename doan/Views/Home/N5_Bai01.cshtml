@@ -91,7 +91,6 @@
                     </style>
                     <thead>
                         <tr>
-						<th>ID</th>
                             <th>Từ Vựng</th>
                             <th>Phát Âm</th>
                             <th>Âm Hán</th>
@@ -107,33 +106,23 @@
                        
                         <tr>
 
-       @*                      <td>@(string.IsNullOrEmpty(item.TuVung) ? "Không có" : item.TuVung)</td> *@
-       @*                      <td>@(string.IsNullOrEmpty(item.PhatAm) ? "Không có" : item.PhatAm)</td> *@
-       @*                      <td>@(string.IsNullOrEmpty(item.AmHan) ? "Không có" : item.AmHan)</td> *@
-       @*                      <td>@(string.IsNullOrEmpty(item.HanTu) ? "Không có" : item.HanTu)</td> *@
-							@* <td>@(string.IsNullOrEmpty(item.Nghia) ? "Không có" : item.Nghia)</td> *@
-                            <td class="text-cell">@item.Id</td>
-                            <td class="text-cell">@item.TuVung</td>
-                            <td class="text-cell">@item.PhatAm</td>
-                            <td class="text-cell">@item.AmHan</td>
-                            <td class="text-cell">@item.HanTu</td>
-                            <td class="text-cell">@item.Nghia</td>
+                            <td>@(string.IsNullOrEmpty(item.TuVung) ? "Không có" : item.TuVung)</td> 
+                            <td>@(string.IsNullOrEmpty(item.PhatAm) ? "Không có" : item.PhatAm)</td> 
+                            <td>@(string.IsNullOrEmpty(item.AmHan) ? "Không có" : item.AmHan)</td> 
+                            <td>@(string.IsNullOrEmpty(item.HanTu) ? "Không có" : item.HanTu)</td> 
+							<td>@(string.IsNullOrEmpty(item.Nghia) ? "Không có" : item.Nghia)</td> 
+                           
+                            @* <td class="text-cell">@item.TuVung</td> *@
+                            @* <td class="text-cell">@item.PhatAm</td> *@
+                            @* <td class="text-cell">@item.AmHan</td> *@
+                            @* <td class="text-cell">@item.HanTu</td> *@
+                            @* <td class="text-cell">@item.Nghia</td> *@
 
                             @* //Phần nút sửa bên bảng *@
-                            <td><button class="edit-btn">...</button></td>
+                            <td><a href="@Url.Action("UpdateTuVung", "Home", new { id = item.Id })"><button class="edit-btn">...</button></a></td>
 
                             <!-- Hidden row for textboxes -->
-                        <tr class="input-row">
-
-                            <td><input type="text" class="edit-Id" value="@item.Id">ID</td>
-                            <td><input type="text" class="edit-tuVung" value="@item.TuVung"></td>
-                            <td><input type="text" class="edit-phatAm" value="@item.PhatAm"></td>
-                            <td><input type="text" class="edit-amHan" value="@item.AmHan"></td>
-                            <td><input type="text" class="edit-hanTu" value="@item.HanTu"></td>
-                            <td><input type="text" class="edit-nghia" value="@item.Nghia"></td>
-                            <td><button class="save-btn">Lưu</button></td>
-
-                        </tr>
+                       
                         </tr>
                     }
                 }

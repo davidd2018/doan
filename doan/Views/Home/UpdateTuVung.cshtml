@@ -1,0 +1,33 @@
+﻿@model doan.Models.Bai01Model
+
+@{
+    ViewData["Title"] = "Update Từ Vựng";
+}
+
+<h2>Update Từ Vựng</h2>
+<script src="~/js/Update.js"></script>
+
+<form asp-action="UpdateVocabulary" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+        <label for="TuVung">Từ Vựng</label>
+        <input type="text" class="form-control" id="TuVung" name="TuVung" value="@Model.TuVung" required />
+    </div>
+    <div class="form-group">
+        <label for="PhatAm">Phát Âm</label>
+        <input type="text" class="form-control" id="PhatAm" name="PhatAm" value="@Model.PhatAm" />
+    </div>
+    <div class="form-group">
+        <label for="AmHan">Âm Hán</label>
+        <input type="text" class="form-control" id="AmHan" name="AmHan" value="@Model.AmHan" />
+    </div>
+    <div class="form-group">
+        <label for="HanTu">Hán Tự</label>
+        <input type="text" class="form-control" id="HanTu" name="HanTu" value="@Model.HanTu" />
+    </div>
+    <div class="form-group">
+        <label for="Nghia">Nghĩa</label>
+        <input type="text" class="form-control" id="Nghia" name="Nghia" value="@Model.Nghia" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>
