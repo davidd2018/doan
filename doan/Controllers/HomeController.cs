@@ -32,7 +32,7 @@ namespace doan.Controllers
             _userManager = userManager;
             _vocabularyRepository = vocabularyRepository;
         }
-
+        sbkjdsckdsnkdsjbknvkdsj 
         public async Task<IActionResult> Index()
         {
             if (_signInManager.IsSignedIn(User)) // Kiểm tra nếu đã đăng nhập
